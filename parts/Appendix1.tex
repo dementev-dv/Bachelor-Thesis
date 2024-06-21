@@ -1,0 +1,47 @@
+\section*{Приложение Б}
+\addcontentsline{toc}{section}{Приложение Б}
+\label{sec:Apendix} \index{Apendix}
+
+\section*{Конфигурация syzkaller}
+
+\{
+
+        "target"\ : "linux/amd64"\ ,
+
+        "http"\ : "127.0.2.1:56741"\ ,
+
+        "workdir"\ : "syzkaller/workdir"\ ,
+
+        "kernel\_obj"\ : "linux-stable"\ ,
+
+        "image"\ : "syzkaller/tools/bullseye.img"\ ,
+
+        "sshkey"\ : "syzkaller/tools/bullseye.id\_rsa"\ ,
+
+        "syzkaller"\ : "syzkaller"\ ,
+
+        "procs"\ : 2,
+
+        "type"\ : "qemu"\ ,
+
+        "vm"\ : \{
+
+                "count"\ : 1,
+
+                "cpu"\ : 2,
+
+                "mem"\ : 8096,
+
+                "kernel"\ : "linux-stable/arch/x86/boot/bzImage"\ ,
+
+                "cmdline"\ : "net.ifnames=0"\ 
+
+        \},
+
+        "interests"\ : ["fs/jffs2/"\ ],
+
+        "enable\_syscalls"\ : ["syz\_mount\_image\$jffs2"\ ,\ "getuid"\ , "geteuid"\ , 
+
+                "fstat"\ , "getresuid"\ , "open"\ , "write"\ , "read"\ ]
+
+\}
